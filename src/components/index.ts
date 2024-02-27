@@ -1,0 +1,1 @@
+export { ReactParallax } from './ReactParallax'
