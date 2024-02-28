@@ -1,9 +1,9 @@
 import { useRef } from 'react'
-import { useScroll, useMotionValueEvent, motion, useTransform /* cubicBezier */ } from 'framer-motion'
+import { useScroll, useMotionValueEvent, motion, useTransform } from 'framer-motion'
 import styles from './ReactParallax.module.scss'
 
-const bg = 'https://placehold.co/100x500'
-const dog = 'https://placedog.net/500/280'
+const bg = 'https://placehold.co/200x1000'
+const dog = 'https://placedog.net/140/280'
 const cat = 'https://placekitten.com/420/320?image=2'
 
 export function ReactParallax() {
@@ -12,9 +12,10 @@ export function ReactParallax() {
     target: container,
     offset: ['start start', 'end end'],
   })
-  // const easing = cubicBezier(1, 0.26, 0.96, 0.68)
-  // const easing = linear(1, 0.26, 0.96, 0.68)
-  const sm = useTransform(scrollYProgress, [0, 1], [0, -100] /* { ease: easing } */)
+
+  const far = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const closer = useTransform(scrollYProgress, [0, 1], [0, -250])
+
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     console.log('Page scroll: ', latest)
   })
@@ -24,10 +25,15 @@ export function ReactParallax() {
       <h1>ReactParallax</h1>
 
       <div ref={container} className={styles.container}>
+        <img alt="city" className={styles.closest} src="city-16bit-foreground.gif" />
+
         <div className={styles.sticky}>
-          <motion.figure className={styles.el} style={{ y: sm }}>
-            <img alt="bg" src={bg} />
-          </motion.figure>
+          <motion.div className={styles.el} style={{ y: far }}>
+            <img className={styles.farbg} alt="bg" src={bg} />
+          </motion.div>
+          <motion.div className={styles.el} style={{ y: closer }}>
+            <img alt="dog" className={styles.closer} src={dog} />
+          </motion.div>
         </div>
       </div>
     </>

@@ -1,31 +1,54 @@
 .container {
-  height: 200vh;
+  height: 150vh;
+  width: 100vw;
   position: relative;
-
-  background-image: url('city-16bit-foreground.gif');
+  overflow: clip;
+  background: blue;
+  /* background-image: url('city-16bit-foreground.gif');
   background-opacity: 0.5;
-  background-size: cover; /* Adjust the background size */
+  background-size: cover; */
   .sticky {
     position: sticky;
     top: 0;
     height: 100vh;
     background: orange;
     opacity: 1;
-    z-index: -1;
-  }
-
-  .el {
-    margin: 0;
     display: flex;
-    height: 100vh;
-
-    border: 1px solid red;
-
+    align-items: center;
     justify-content: center;
   }
 
-  img {
-    height: 100vh;
+  .el {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    border: 3px solid red;
+    /* align-items: center;
+    justify-content: center; */
+    position: absolute;
+  }
+
+  .closest {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .closer {
+    max-height: 100%;
+    justify-self: center;
+    align-self: center;
+    transform: perspective(0.1px) scale3d(1, 1, 1) translateZ(0.01px);
+  }
+
+  .farbg {
+    max-height: 100%;
+    justify-self: center;
+    align-self: center;
+    transform: perspective(0.1px) scale3d(1, 1, 1) translateZ(0.01px);
   }
 }
 
