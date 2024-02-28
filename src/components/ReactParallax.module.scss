@@ -1,29 +1,31 @@
-.helo {
-  background: red;
-}
-
 .container {
-  background: green;
-  height: 300vh;
+  height: 200vh;
   position: relative;
 
+  background-image: url('city-16bit-foreground.gif');
+  background-opacity: 0.5;
+  background-size: cover; /* Adjust the background size */
   .sticky {
     position: sticky;
     top: 0;
     height: 100vh;
     background: orange;
+    opacity: 1;
+    z-index: -1;
   }
 
   .el {
     margin: 0;
     display: flex;
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    height: 100vh;
+
     border: 1px solid red;
-    top: 0;
-    align-items: center;
+
     justify-content: center;
+  }
+
+  img {
+    height: 100vh;
   }
 }
 
@@ -33,6 +35,6 @@
   left: 0;
   right: 0;
   height: 10px;
-  z-index: 20;
+  z-index: 40;
   transform-origin: 0%;
 }
