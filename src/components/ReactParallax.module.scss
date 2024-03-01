@@ -1,12 +1,8 @@
 .container {
   position: relative;
   overflow: clip;
-
   width: 100vw;
   aspect-ratio: 6 / 19;
-  /* background-image: url('city-16bit-foreground.gif');
-  background-opacity: 0.5;
-  background-size: cover; */
 
   .sticky {
     box-sizing: border-box;
@@ -50,7 +46,6 @@
   .closer {
     max-height: 100%;
     margin-top: 2%;
-
     image-rendering: pixelated;
 
   }

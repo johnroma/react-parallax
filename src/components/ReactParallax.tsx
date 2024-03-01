@@ -3,10 +3,7 @@ import { useScroll, motion, useTransform, useAnimation } from 'framer-motion'
 import Lenis from '@studio-freight/lenis'
 import styles from './ReactParallax.module.scss'
 
-const bg = 'city-16bit-bg.png'
-const cloud = 'cloud1.png'
-
-export function ReactParallax() {
+export function ReactParallax({ bg, cloud, foreground }: { bg: string; cloud: string; foreground: string }) {
   const container = useRef(null)
   const controls = useAnimation()
 
@@ -54,32 +51,29 @@ export function ReactParallax() {
   }, [controls])
 
   return (
-    <>
+    <div ref={container} className={styles.container}>
       <motion.div
         className={styles.progressBar}
         style={{ backgroundColor: 'green', opacity: 0, scaleX: scrollYgreen }}
       />
+      <img alt="city" width="128" height="407" className={styles.closest} src={foreground} />
 
-      <div ref={container} className={styles.container}>
-        <img alt="city" width="128" height="407" className={styles.closest} src="city-16bit-sm.png" />
-
-        <div className={styles.sticky}>
-          <motion.div className={styles.bgel} style={{ y: far }}>
-            <img width="128" height="407" className={styles.farbg} alt="bg" src={bg} />
-          </motion.div>
-          <motion.div className={styles.el} style={{ y: closer }}>
-            <motion.img
-              initial={{ scale: 2.5 }}
-              alt="cloud"
-              height="34"
-              width="70"
-              className={styles.closer}
-              src={cloud}
-              animate={controls}
-            />
-          </motion.div>
-        </div>
+      <div className={styles.sticky}>
+        <motion.div className={styles.bgel} style={{ y: far }}>
+          <img width="128" height="407" className={styles.farbg} alt="bg" src={bg} />
+        </motion.div>
+        <motion.div className={styles.el} style={{ y: closer }}>
+          <motion.img
+            initial={{ scale: 2.5 }}
+            alt="cloud"
+            height="34"
+            width="70"
+            className={styles.closer}
+            src={cloud}
+            animate={controls}
+          />
+        </motion.div>
       </div>
-    </>
+    </div>
   )
 }
