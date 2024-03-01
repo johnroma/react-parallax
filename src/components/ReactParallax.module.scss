@@ -1,38 +1,47 @@
 .container {
-  height: 150vh;
-  width: 100vw;
   position: relative;
   overflow: clip;
-  background: blue;
+
+  width: 100vw;
+  aspect-ratio: 6 / 19;
   /* background-image: url('city-16bit-foreground.gif');
   background-opacity: 0.5;
   background-size: cover; */
+
   .sticky {
+    box-sizing: border-box;
     position: sticky;
     top: 0;
     height: 100vh;
-    background: orange;
+    width: 100vw;
+    background: #a37e77;
     opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid black;
   }
 
-  .el {
-    display: grid;
-    height: 100%;
+  .bgel {
+    height: auto;
     width: 100%;
-    border: 3px solid red;
-    /* align-items: center;
-    justify-content: center; */
     position: absolute;
+  }
+  .el {
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    position: absolute;
+    justify-content: center;
   }
 
   .closest {
     z-index: 10;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: auto;
+    top: 0;
     object-fit: cover;
     object-position: center center;
     image-rendering: pixelated;
@@ -40,18 +49,16 @@
 
   .closer {
     max-height: 100%;
-    justify-self: center;
-    align-self: center;
-    transform: perspective(0.1px) scale3d(1, 1, 3.3) translateZ(0.1px);
+
     image-rendering: pixelated;
+
   }
 
   .farbg {
-    max-height: 100%;
     image-rendering: pixelated;
-    justify-self: center;
-    align-self: center;
-    transform: perspective(0.1px) scale3d(1, 1, 3.3) translateZ(0.1px);
+    width: 100%;
+    aspect-ratio: 6 / 19;
+    height: auto;
   }
 }
 

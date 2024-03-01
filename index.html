@@ -7,8 +7,19 @@
   </head>
   <body>
     <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
       body {
+        min-height: 100vh;
         margin: 2rem 0;
+        max-width: 100%;
+        overflow-x: hidden;
       }
     </style>
     <div id="root"></div>
