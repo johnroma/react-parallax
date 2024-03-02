@@ -4,10 +4,7 @@
     "name": "John Romani",
     "email": "john@anthood.com"
   },
-  "keywords": [
-    "parallax",
-    "framer motion"
-  ],
+  "keywords": ["parallax", "framer motion"],
   "homepage": "https://anthood.com",
   "description": "React Component ready to be published on npm",
   "license": "MIT",
@@ -27,7 +24,8 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "framer-motion": "^11.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.61",

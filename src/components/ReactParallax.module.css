@@ -1,0 +1,67 @@
+.container {
+  position: relative;
+  overflow: clip;
+  width: 100vw;
+  aspect-ratio: 6 / 19;
+}
+.container .sticky {
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #a37e77;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.container .bgel {
+  height: auto;
+  width: 100%;
+  position: absolute;
+}
+.container .el {
+  height: auto;
+  width: 100%;
+
+  display: flex;
+  position: absolute;
+  justify-content: center;
+}
+
+.container .closest {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  object-fit: cover;
+  object-position: center center;
+  image-rendering: pixelated;
+}
+
+.container .closer {
+  max-height: 100%;
+  margin-top: 2%;
+  image-rendering: pixelated;
+}
+
+.container .farbg {
+  image-rendering: pixelated;
+  width: 100%;
+  aspect-ratio: 6 / 19;
+  height: auto;
+}
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  z-index: 40;
+  transform-origin: 0%;
+}

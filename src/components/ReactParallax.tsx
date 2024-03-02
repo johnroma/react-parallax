@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useScroll, motion, useTransform, useAnimation } from 'framer-motion'
 import Lenis from '@studio-freight/lenis'
-import styles from './ReactParallax.module.scss'
+import styles from './ReactParallax.module.css'
 
 export function ReactParallax({ bg, cloud, foreground }: { bg: string; cloud: string; foreground: string }) {
   const container = useRef(null)
