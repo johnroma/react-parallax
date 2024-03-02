@@ -1,1 +1,1 @@
-export { ReactParallax } from './ReactParallax'
+export { Parallax } from './Parallax'
