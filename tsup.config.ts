@@ -1,17 +1,14 @@
 import { defineConfig } from 'tsup'
 import path from 'path'
-import fsPromises from 'fs/promises'
+import fs from 'fs'
 import postcss from 'postcss'
 import postcssModules from 'postcss-modules'
-import cssnano from 'cssnano' // Import cssnano
+import cssnano from 'cssnano'
 import { generateScopedName } from 'hash-css-selector'
 
 export default defineConfig({
   entry: ['src/components/index.ts'],
   format: ['esm', 'cjs'],
-  loader: {
-    '.css': 'local-css',
-  },
   dts: true,
   sourcemap: true,
   clean: true,
@@ -19,7 +16,7 @@ export default defineConfig({
   esbuildPlugins: [
     {
       name: 'css-module',
-      setup(build): void {
+      setup(build) {
         build.onResolve({ filter: /\.module\.css$/, namespace: 'file' }, (args) => {
           return {
             path: `${args.path}#css-module`,
@@ -34,7 +31,7 @@ export default defineConfig({
             pluginData: { pathDir: string }
           }
 
-          const source = await fsPromises.readFile(pluginData.pathDir, 'utf8')
+          const source = await fs.promises.readFile(pluginData.pathDir, 'utf8')
 
           let cssModule: any = {}
           const result = await postcss([
@@ -42,7 +39,6 @@ export default defineConfig({
               generateScopedName: function (name, filename) {
                 const newSelector = generateScopedName(name, filename)
                 cssModule[name] = newSelector
-
                 return newSelector
               },
               getJSON: () => {},
@@ -51,31 +47,16 @@ export default defineConfig({
             cssnano({ preset: 'default' }), // Add cssnano here for minification
           ]).process(source, { from: pluginData.pathDir })
 
+          // Write the CSS to styles.css
+          await fs.promises.writeFile('dist/styles.css', result.css)
+
+          // Export the CSS module object
           return {
-            pluginData: { css: result.css },
-            contents: `import "${pluginData.pathDir}"; export default ${JSON.stringify(cssModule)}`,
-          }
-        })
-        build.onResolve({ filter: /\.module\.css$/, namespace: 'css-module' }, (args) => ({
-          path: path.join(args.resolveDir, args.path, '#css-module-data'),
-          namespace: 'css-module',
-          pluginData: args.pluginData as { css: string },
-        }))
-        build.onLoad({ filter: /#css-module-data$/, namespace: 'css-module' }, (args) => {
-          const css = (args.pluginData as { css: string }).css
-          const contents = `
-            const style = document.createElement('style');
-            style.type = 'text/css';
-            style.appendChild(document.createTextNode(\`${css}\`));
-            document.head.appendChild(style);
-          `
-          return {
-            contents,
-            loader: 'js',
+            pluginData: { css: result.css, json: cssModule },
+            contents: `export default ${JSON.stringify(cssModule)}`,
           }
         })
       },
     },
   ],
-  injectStyle: true,
 })

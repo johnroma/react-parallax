@@ -52,12 +52,12 @@ export function ReactParallax({ bg, cloud, foreground }: { bg: string; cloud: st
 
   return (
     <div ref={container} className={styles.container}>
+      <div>{styles.progressBar}bs</div>
       <motion.div
         className={styles.progressBar}
         style={{ backgroundColor: 'green', opacity: 0, scaleX: scrollYgreen }}
       />
       <img alt="city" width="128" height="407" className={styles.closest} src={foreground} />
-
       <div className={styles.sticky}>
         <motion.div className={styles.bgel} style={{ y: far }}>
           <img width="128" height="407" className={styles.farbg} alt="bg" src={bg} />
