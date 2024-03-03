@@ -124,16 +124,18 @@ export function Parallax({
       <img alt="city" width="128" height="407" className={styles.closest} src={foreground} />
       <div className={styles.sticky}>
         <motion.div className={styles.bgel} style={{ y: z0 }}>
-          <img
-            width="128"
-            height="407"
-            className={styles.farbg}
-            alt="bg"
-            src={bg}
-            onLoad={handleImageLoad}
-            ref={imgRef}
-          />
-          <img width="128" height="407" alt="water" src={bg2} className={styles.farbg2} />
+          <div className={styles.farbg}>
+            <img
+              width="128"
+              height="407"
+              className={styles.farbg1}
+              alt="bg"
+              src={bg}
+              onLoad={handleImageLoad}
+              ref={imgRef}
+            />
+            <img width="128" height="407" alt="water" src={bg2} className={styles.farbg2} />
+          </div>
         </motion.div>
         <motion.div className={styles.el} style={{ y: closer }}>
           <motion.img
