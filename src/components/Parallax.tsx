@@ -3,7 +3,12 @@ import { useScroll, motion, useTransform, useAnimation } from 'framer-motion'
 import Lenis from '@studio-freight/lenis'
 import styles from './Parallax.module.css'
 
-export function Parallax({ bg, cloud, foreground }: Readonly<{ bg: string; cloud: string; foreground: string }>) {
+export function Parallax({
+  bg,
+  bg2,
+  cloud,
+  foreground,
+}: Readonly<{ bg: string; bg2: string; cloud: string; foreground: string }>) {
   const container = useRef(null)
   const controls = useAnimation()
 
@@ -128,7 +133,7 @@ export function Parallax({ bg, cloud, foreground }: Readonly<{ bg: string; cloud
             onLoad={handleImageLoad}
             ref={imgRef}
           />
-          <img width="128" height="407" alt="water" src="city-16bit-bg-water.gif" className={styles.farbg2} />
+          <img width="128" height="407" alt="water" src={bg2} className={styles.farbg2} />
         </motion.div>
         <motion.div className={styles.el} style={{ y: closer }}>
           <motion.img
