@@ -19,7 +19,7 @@
 }
 
 .container .bgel {
-  height: auto;
+  height: 100%;
   width: 100%;
   position: absolute;
 }
@@ -54,6 +54,17 @@
   width: 100%;
   aspect-ratio: 6 / 19;
   height: auto;
+  position: absolute;
+  z-index: -1;
+}
+
+.container .farbg2 {
+  image-rendering: pixelated;
+  width: 100%;
+  aspect-ratio: 6 / 19;
+  height: auto;
+  position: absolute;
+  z-index: 11;
 }
 
 .progressBar {

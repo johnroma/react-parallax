@@ -5,12 +5,16 @@
     "email": "john@anthood.com"
   },
   "repository": "https://github.com/johnroma/react-parallax",
-  "keywords": ["parallax", "framer motion", "react"],
+  "keywords": [
+    "parallax",
+    "framer motion",
+    "react"
+  ],
   "homepage": "https://john.ro",
   "description": "Predifined Parallax system just awaiting content",
   "license": "MIT",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

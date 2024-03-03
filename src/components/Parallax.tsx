@@ -12,7 +12,8 @@ export function Parallax({ bg, cloud, foreground }: Readonly<{ bg: string; cloud
     offset: ['start start', 'end end'],
   })
 
-  const far = useTransform(scrollYgreen, [0, 1], ['0%', '-16%'])
+  const z0 = useTransform(scrollYgreen, [0, 1], ['0%', '-16%'])
+  // const z1 = useTransform(scrollYgreen, [0, 1], ['0%', '-100%']) for the city
   const closer = useTransform(scrollYgreen, [0, 1], ['0%', '-300%'])
 
   useEffect(() => {
@@ -111,14 +112,13 @@ export function Parallax({ bg, cloud, foreground }: Readonly<{ bg: string; cloud
 
   return (
     <div ref={container} className={styles.container}>
-      <div className={styles.progressBar}>{scaling}</div>
       <motion.div
         className={styles.progressBar}
         style={{ backgroundColor: 'green', opacity: 0, scaleX: scrollYgreen }}
       />
       <img alt="city" width="128" height="407" className={styles.closest} src={foreground} />
       <div className={styles.sticky}>
-        <motion.div className={styles.bgel} style={{ y: far }}>
+        <motion.div className={styles.bgel} style={{ y: z0 }}>
           <img
             width="128"
             height="407"
@@ -128,6 +128,7 @@ export function Parallax({ bg, cloud, foreground }: Readonly<{ bg: string; cloud
             onLoad={handleImageLoad}
             ref={imgRef}
           />
+          <img width="128" height="407" alt="water" src="city-16bit-bg-water.gif" className={styles.farbg2} />
         </motion.div>
         <motion.div className={styles.el} style={{ y: closer }}>
           <motion.img
@@ -135,7 +136,7 @@ export function Parallax({ bg, cloud, foreground }: Readonly<{ bg: string; cloud
             className={styles.closer}
             src={cloud}
             animate={controls}
-            style={{ width: `${scaling * 5}rem` }}
+            style={{ width: `${scaling * 100}px` }}
           />
         </motion.div>
       </div>
